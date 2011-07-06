@@ -1,0 +1,5 @@
+.DS_Store
+build
+www/*.jpg
+www/js/client.js
+www/js/pokey.js
