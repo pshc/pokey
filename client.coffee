@@ -30,9 +30,16 @@ $(document).click (event) ->
         if slug and History.enabled
             event.preventDefault()
             pokey.img.attr src: slug + '.jpg'
-            $.ajax(url: slug, headers: headers).success (json) ->
-                comic = JSON.parse json
-                History.pushState comic, comic.title, slug
+            $.ajax (
+                url: slug
+                headers: headers
+                timeout: 3000
+                success: (json) ->
+                    comic = JSON.parse json
+                    History.pushState comic, comic.title, slug
+                error: ->
+                    document.location = slug
+            )
 
 pokey = new Client
 pokey.setupFromPage()
