@@ -14,8 +14,8 @@ exports.start_login = (req, resp) ->
       resp.send 500, 'OAuth error.'
       return
     # Ought to expire this.
-    req.session['oauth:' + token] = secret
-    callback_url = encodeURI 'http://' + req.headers.host + req.url
+    req.session["oauth:#{token}"] = secret
+    callback_url = encodeURI "#{config.WWW_URL}#{req.url}"
     go = "#{authorize_url}?oauth_token=#{token}&oauth_callback=#{callback_url}"
     resp.redirect go, 303
 
@@ -25,11 +25,12 @@ exports.confirm_login = (req, resp) ->
   if not token or not verifier
     resp.redirect '/'
     return
-  secret = req.session['oauth:' + token]
+  key = "oauth:#{token}"
+  secret = req.session[key]
   if not secret
     resp.send 401, 'No login cookie. Try again.'
     return
-  delete req.session['oauth:' + token]
+  delete req.session[key]
   oauth.getOAuthAccessToken token, secret, verifier, (err, access_token, access_token_secret, results) ->
     if err
       if parseInt err.statusCode == 401
