@@ -4,6 +4,7 @@ express = require 'express'
 jsdom = require 'jsdom'
 path = require 'path'
 pokey = require './pokey'
+twitter = require './twitter'
 
 redis_client = ->
     require('redis').createClient config.REDIS_CONFIG.port
@@ -44,6 +45,7 @@ class DOM extends pokey.Pokey
 
     render: ->
         """<!doctype html>
+           <meta charset="utf-8">
            <title>#{escape_html(@title)}</title>
            <script></script><link rel="stylesheet" href="pokey.css">
            #{@document.body.innerHTML}
@@ -54,7 +56,19 @@ escape_html = (s) ->
         {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]
 
 app = express.createServer()
+app.use express.bodyParser()
+app.use express.cookieParser()
 app.use express.static config.WWW_ROOT
+app.use express.session config.SESSION_CONFIG
+
+if config.DEBUG
+    app.post '/login', (req, resp) ->
+        req.session.username = 'test'
+        resp.redirect '..'
+else
+    console.log 'ok'
+    app.get '/login', twitter.start_login
+    app.post '/login', twitter.confirm_login
 
 app.get '/', (req, resp) ->
     redis.lindex 'slugs', -1, (err, latest) ->

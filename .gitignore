@@ -1,5 +1,6 @@
 .DS_Store
 build
+config.coffee
 www/*.jpg
 www/js/client.js
 www/js/pokey.js

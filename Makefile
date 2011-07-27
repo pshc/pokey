@@ -1,6 +1,6 @@
 all: client
 
-server: pokey.coffee server.coffee config.coffee
+server: pokey.coffee server.coffee config.coffee twitter.coffee
 	coffee -o build -cw $^
 
 client: pokey.coffee client.coffee
