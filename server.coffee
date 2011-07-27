@@ -67,7 +67,6 @@ if config.DEBUG
         req.session.username = 'test'
         resp.redirect '..'
 else
-    console.log 'ok'
     app.get '/login', twitter.start_login
     app.post '/login', twitter.confirm_login
 
