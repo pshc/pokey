@@ -5,6 +5,6 @@ module.exports = config =
     SESSION_CONFIG: {secret: 'foo'}
     JQUERY: 'jquery-1.6.1.min.js'
     WWW_ROOT: require('path').join __dirname, '..', 'www'
-    TWITTER_CALLBACK_URL: 'http://example.com/login'
+    TWITTER_CALLBACK_URL: 'http://example.com/confirm'
     TWITTER_CONSUMER_KEY: 'qux'
     TWITTER_CONSUMER_SECRET: 'quux'

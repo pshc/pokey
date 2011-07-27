@@ -63,12 +63,12 @@ app.use express.static config.WWW_ROOT
 app.use express.session config.SESSION_CONFIG
 
 if config.DEBUG
-    app.post '/login', (req, resp) ->
+    app.get '/login', (req, resp) ->
         req.session.username = 'test'
-        resp.redirect '..'
+        resp.redirect '/'
 else
     app.get '/login', twitter.start_login
-    app.post '/login', twitter.confirm_login
+    app.get '/confirm', twitter.confirm_login
 
 app.get '/', (req, resp) ->
     redis.lindex 'slugs', -1, (err, latest) ->
