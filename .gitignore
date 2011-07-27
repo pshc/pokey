@@ -2,5 +2,6 @@
 build
 config.coffee
 www/*.jpg
+!www/purple.jpg
 www/js/client.js
 www/js/pokey.js

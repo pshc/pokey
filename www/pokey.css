@@ -1,4 +1,6 @@
 body {
+	background: black url('purple.jpg') top right no-repeat;
+	color: white;
 	text-align: center;
 }
 img {
