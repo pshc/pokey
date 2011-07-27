@@ -33,8 +33,9 @@ class DOM extends pokey.Pokey
         @img = $ '<img>'
         @prev = $ '<a>Previous</a>'
         @next = $ '<a>Next</a>'
+        @nav = $ '<nav><a>Home</a></nav>'
         @article = $('<article/>').append @prev, @img, @next
-        $('body').append @h1, @article
+        $('body').append @h1, @nav, @article
         @after = """<script src="js/#{config.JQUERY}"></script>
                     <script src="js/history.js"></script>
                     <script src="js/pokey.js"></script>

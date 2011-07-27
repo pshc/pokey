@@ -6,3 +6,13 @@ body {
 img {
 	display: block;
 }
+nav a {
+	background: url('leftfoot.png') no-repeat;
+	color: black;
+	display: block;
+	margin: 0;
+	padding: 1em;
+	height: 100px;
+	user-select: none;
+	width: 100px;
+}
