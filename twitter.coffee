@@ -5,7 +5,7 @@ request_token_url = "https://api.twitter.com/oauth/request_token"
 access_token_url = "https://api.twitter.com/oauth/access_token"
 authorize_url = "https://api.twitter.com/oauth/authorize"
 
-oa = new oauth.OAuth request_token_url, access_token_url, config.TWITTER_CONSUMER_KEY, config.TWITTER_CONSUMER_SECRET, '1.0', null, 'HMAC-SHA1'
+oa = new oauth.OAuth request_token_url, access_token_url, config.TWITTER_CONSUMER_KEY, config.TWITTER_CONSUMER_SECRET, '1.0', config.TWITTER_CALLBACK_URL, 'HMAC-SHA1'
 
 exports.start_login = (req, resp) ->
   oa.getOAuthRequestToken (err, token, secret, results) ->
@@ -15,9 +15,7 @@ exports.start_login = (req, resp) ->
       return
     # Ought to expire this.
     req.session["oauth:#{token}"] = secret
-    callback_url = encodeURI "#{config.WWW_URL}#{req.url}"
-    go = "#{authorize_url}?oauth_token=#{token}&oauth_callback=#{callback_url}"
-    resp.redirect go, 303
+    resp.redirect "#{authorize_url}?oauth_token=#{token}", 303
 
 exports.confirm_login = (req, resp) ->
   token = req.query.oauth_token
@@ -31,7 +29,7 @@ exports.confirm_login = (req, resp) ->
     resp.send 401, 'No login cookie. Try again.'
     return
   delete req.session[key]
-  oauth.getOAuthAccessToken token, secret, verifier, (err, access_token, access_token_secret, results) ->
+  oa.getOAuthAccessToken token, secret, verifier, (err, access_token, access_token_secret, results) ->
     if err
       if parseInt err.statusCode == 401
         resp.send 401, 'Permission failure.'
