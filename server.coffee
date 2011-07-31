@@ -41,13 +41,10 @@ class DOM extends pokey.Pokey
                     <script src="js/pokey.js"></script>
                     <script src="js/client.js"></script>"""
 
-    # workaround
-    setTitle: (@title) ->
-
     render: ->
         """<!doctype html>
            <meta charset="utf-8">
-           <title>#{escape_html(@title)}</title>
+           <title>#{escape_html(@document.title)}</title>
            <script></script><link rel="stylesheet" href="pokey.css">
            #{@document.body.innerHTML}
            #{@after}"""

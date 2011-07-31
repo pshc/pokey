@@ -17,10 +17,6 @@ class Client extends window.Pokey
         cur = History.getState()
         History.replaceState comic, cur.title, cur.url
 
-    setTitle: (title) ->
-        # workaround
-        document.title = title
-
 slugFromUrl = (url) -> url.match(/\/([^\/]*)$/)[1]
 
 headers = {accept: 'application/pokey+json'}
