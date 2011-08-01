@@ -6,8 +6,8 @@ class Client extends window.Pokey
         @img = $ 'img'
         @article = $ 'article'
         @h2 = $ 'h2'
-        @prev = @article.find 'a:first'
-        @next = @article.find 'a:last'
+        @prev = $ '#prev'
+        @next = $ '#next'
 
         comic = title: document.title
         h = @next.prop 'href'

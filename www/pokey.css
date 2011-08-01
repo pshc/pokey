@@ -43,3 +43,15 @@ nav a {
 	user-select: none;
 	width: 100px;
 }
+#prev, #next {
+	display: inline-block;
+	height: 72px;
+	text-indent: -1000em;
+	width: 100px;
+}
+#prev {
+	background: url('prev.png') no-repeat;
+}
+#next {
+	background: url('next.png') no-repeat;
+}

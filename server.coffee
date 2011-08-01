@@ -32,8 +32,8 @@ class DOM extends pokey.Pokey
         h1 = $ '<h1>Punky the Duck</h1>'
         @h2 = $ '<h2/>'
         @img = $ '<img>'
-        @prev = $ '<a>Previous</a>'
-        @next = $ '<a>Next</a>'
+        @prev = $ '<a id="prev">Previous</a>'
+        @next = $ '<a id="next">Next</a>'
         @nav = $ '<nav><a>Home</a></nav>'
         @article = $('<article/>').append @h2, @prev, @img, @next
         $('body').append h1, @nav, @article
