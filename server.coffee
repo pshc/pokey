@@ -29,13 +29,14 @@ class DOM extends pokey.Pokey
 
     setupPage: ->
         $ = @$
-        @h1 = $ '<h1/>'
+        h1 = $ '<h1>Punky the Duck</h1>'
+        @h2 = $ '<h2/>'
         @img = $ '<img>'
         @prev = $ '<a>Previous</a>'
         @next = $ '<a>Next</a>'
         @nav = $ '<nav><a>Home</a></nav>'
-        @article = $('<article/>').append @prev, @img, @next
-        $('body').append @h1, @nav, @article
+        @article = $('<article/>').append @h2, @prev, @img, @next
+        $('body').append h1, @nav, @article
         @after = """<script src="js/#{config.JQUERY}"></script>
                     <script src="js/history.js"></script>
                     <script src="js/pokey.js"></script>

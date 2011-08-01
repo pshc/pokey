@@ -1,10 +1,30 @@
+article {
+	display: block;
+	margin: auto;
+}
 body {
 	background: black url('purple.jpg') top right no-repeat;
 	color: white;
+	margin: 0;
+	padding: 0;
 	text-align: center;
 }
+h1 {
+	background: url('title.png') no-repeat;
+	display: inline-block;
+	height: 200px;
+	text-indent: -100em;
+	width: 800px;
+}
 img {
+	vertical-align: middle;
+}
+nav {
+	background: black;
 	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 nav a {
 	background: url('leftfoot.png') no-repeat;

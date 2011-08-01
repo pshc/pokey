@@ -5,7 +5,7 @@ class Client extends window.Pokey
         @document = document
         @img = $ 'img'
         @article = $ 'article'
-        @h1 = $ 'h1'
+        @h2 = $ 'h2'
         @prev = @article.find 'a:first'
         @next = @article.find 'a:last'
 
