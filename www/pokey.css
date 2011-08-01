@@ -20,11 +20,18 @@ img {
 	vertical-align: middle;
 }
 nav {
-	background: black;
+	background: transparent url('nav.png') top left repeat-x;
 	display: block;
-	margin: 0;
+	height: 446px;
+	margin: 0 0 -250px 0;
 	padding: 0;
 	width: 100%;
+}
+nav:before {
+	content: url('swoop.png');
+	display: block;
+	width: 429px;
+	height: 446px;
 }
 nav a {
 	background: url('leftfoot.png') no-repeat;
