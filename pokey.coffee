@@ -1,6 +1,6 @@
 class Pokey
     loadComic: (slug, comic) ->
-        @img.attr 'src', slug + '.jpg'
+        @img.attr 'src', comic.image || (slug + '.jpg')
         @h2.text comic.title
         @document.title = comic.title
         if comic.prev then @prev.attr href: comic.prev else @prev.removeAttr 'href'
